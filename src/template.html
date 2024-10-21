@@ -6,11 +6,11 @@
     <title>Weather The App</title>
 </head>
 <body>
-    <div class="contianer">
+    <div class="container">
         <div class="weather-form">
-            <form action="get" novalidate>
+            <form action="get" class="search-form" novalidate>
                 <div class="input">
-                    <label for="city-code">Search</label>
+                    <label for="city-code" class="city-code-text">Search</label>
                     <input type="text" name="city-code" id="city-code" placeholder="Enter City name or ZipCode">
                 </div>
                 <button type="submit">Submit</button>
@@ -18,10 +18,23 @@
         </div>
         <div class="weather-contianer">
             <div class="current-container">
-                <div class="current-weather"></div>
-                <div class="hourly-weather"></div>
+                <div class="current-weather">
+                    <div class="current-title">
+                        <h2>Current Weather</h2>                        
+                    </div>
+                    <div class="current-data"></div>
+                </div>
+                <div class="hourly-weather">
+                    <div class="hourly-title">
+                        <h2>Hourly Forecast</h2>
+                    </div>
+                    <div class="hourly-data"></div>
+                </div>
             </div>
             <div class="next-container">
+                <div class="next-title">
+                    <h2>Next Days Forecast</h2>
+                </div>
                 <div class="next-days-weather"></div>
             </div>  
         </div>

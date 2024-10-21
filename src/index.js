@@ -19,7 +19,8 @@ async function getWeatherData(input) {
     }
 }
 
-document.querySelector('.search-button').addEventListener('click', () => {
+document.querySelector('.search-form').addEventListener('submit', (event) => {
+    event.preventDefault();
     const input = document.querySelector('#city-code').value;
     getWeatherData(input);
 });
