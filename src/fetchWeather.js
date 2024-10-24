@@ -48,6 +48,7 @@ export async function cityFetch(input) {
             dt_txt: day.dt_txt,
         }));
 
+        console.log(weatherStatus);
         return { currentWeather, hourlyWeather, weatherStatus, nextDaysWeather };
 
     } catch (error) {

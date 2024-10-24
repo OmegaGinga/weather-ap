@@ -1,27 +1,39 @@
 // renderWeather.js
-import treeImage from './resources/tree.jpg';
+import clearSky from './resources/Despejado.jpeg';
+import someClouds from './resources/Algunas.jpg';
+import thunderStorm from './resources/tormenta.jpg';
+import rain from './resources/Lluvioso.jpg';
+import tree from './resources/tree.jpg';
+import fog from './resources/neblina.jpg';
+
 
 export function renderCurrentWeather(currentWeather) {
     const currentData = document.querySelector('.current-data')
-
+    currentData.innerHTML = '';
     currentData.innerHTML = `
-        <p>Temperature: ${currentWeather.temp}°C</p>
-        <p>Condition: ${currentWeather.weather[0].description}</p>
+        <div class='current-data-container'>
+            <p>Temperature: ${currentWeather.temp}°C</p>
+            <p>Condition: ${currentWeather.weather[0].description}</p>
+        </div>
     `;
 }
 
 export function renderHourlyWeather(hourlyWeather) {
     const hourlyData = document.querySelector('.hourly-data')
-
+    
+    hourlyData.innerHTML = '';
     hourlyWeather.forEach(hour => {
         hourlyData.innerHTML += `
-            <p>${hour.dt_txt}: ${hour.temp}°C, ${hour.description}</p>
+        
+            <div><p>${hour.temp}°C, ${hour.description}</p></div>
         `;
     });
 }
 
 export function renderNextDaysWeather(nextDaysWeather) {
     const nextDaysWeatherDiv = document.querySelector('.next-days-weather');
+
+    nextDaysWeatherDiv.innerHTML = '';
     nextDaysWeather.forEach(day => {
         nextDaysWeatherDiv.innerHTML += `
             <p>${day.dt_txt}: ${day.temp}°C, ${day.description}</p>
@@ -34,19 +46,22 @@ export function setWeatherBackground(weatherStatus) {
     const statusCode = Number(weatherStatus);
 
     if (statusCode === 800) {
-        console.log('1');
-        background.style.backgroundImage = `url(./resources/tree.jpg)`;
+        //clear sky
+        background.style.backgroundImage = `url(${clearSky})`;
     } else if (statusCode >= 801 && statusCode <= 804) {
-        console.log('2');
-        background.style.backgroundImage = `url(${treeImage})`;
+        //some clouds
+        background.style.backgroundImage = `url(${someClouds})`;
     } else if (statusCode >= 200 && statusCode < 300) {
-        console.log('3');
-        background.style.backgroundImage = `url(./resources/tree.jpg)`;
+        //thunder storm
+        background.style.backgroundImage = `url(${thunderStorm})`;
     } else if (statusCode >= 500 && statusCode < 600) {
-        console.log('4');
-        background.style.backgroundImage = `url(./resources/tree.jpg)`;
-    } else {
-        console.log('5');
-        background.style.backgroundImage = `url(./resources/tree.jpg)`;
+        //rain
+        background.style.backgroundImage = `url(${rain})`;
+    } else if(statusCode >=700 && statusCode < 800){
+        //fog
+        background.style.backgroundImage = `url(${fog})`;
+    }else {
+        //tree?
+        background.style.backgroundImage = `url(${tree})`;
     }
 }
