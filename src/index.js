@@ -5,6 +5,10 @@ import './styles.css';
 import { fetchWeather } from './fetchWeather.js';
 import { renderCurrentWeather, renderHourlyWeather, renderNextDaysWeather, setWeatherBackground } from './renderWeather.js';
 
+const title = document.querySelector('.title');
+
+getWeatherData('Toronto');
+
 async function getWeatherData(input) {
     try {        
         const { currentWeather, hourlyWeather, weatherStatus, nextDaysWeather } = await fetchWeather(input);
@@ -22,5 +26,6 @@ async function getWeatherData(input) {
 document.querySelector('.search-form').addEventListener('submit', (event) => {
     event.preventDefault();
     const input = document.querySelector('#city-code').value;
+    title.innerHTML =`<h1>${input}</h1>`
     getWeatherData(input);
 });

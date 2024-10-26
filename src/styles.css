@@ -5,10 +5,11 @@
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .container {
@@ -97,13 +98,35 @@ body {
     align-items: center;
 }
 
+.current-data-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.current-data-container img{
+    width: 30%;
+    height: auto;
+
+}
+
+.current-text{
+    display: flex;
+    gap: 20px;    
+    align-items: center;
+}
+.current-text p:first-child{
+    font-size: 2rem;
+}
+
 .hourly-weather{
     height: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.4);
     padding: 0 20px;
     border-radius: 50px;
 }
@@ -115,7 +138,43 @@ body {
     align-items: center;
     overflow-x: auto;
     overflow-y: hidden;
-    gap: calc(100%/2);
+    gap: calc(50%/2);
     scroll-behavior: smooth;
     scrollbar-color: #007BFF rgba(0,0,0,0);
+}
+
+.image-data-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.image-data-container p{
+    width: 100px;
+}
+
+.image-data-container img{
+    width: 100%;
+    height: auto;
+}
+
+.next-day-image-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.next-day-image-text img{
+
+    width: 100%;
+    height: auto;
+}
+
+.title{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
 }

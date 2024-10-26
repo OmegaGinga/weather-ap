@@ -39,7 +39,7 @@ export async function cityFetch(input) {
         const hourlyWeather = forecastData.list.slice(0, 8).map(hour => ({
             temp: hour.main.temp,
             description: hour.weather[0].description,
-            dt_txt: hour.dt_txt,
+            dt_txt: hour.dt_txt.split(' ')[1].slice(0, 5),
         }));
 
         const nextDaysWeather = forecastData.list.filter(item => item.dt_txt.includes('12:00:00')).slice(0, 5).map(day => ({
